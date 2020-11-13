@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "fairest"
+version = "0.1.0"
+description = ""
+authors = ["Ang Houfu <damon.houf@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pluggy = "^0.13.1"
+python-docx = "^0.8.10"
+spacy-nightly = "^3.0.0-rc.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6"
+pytest-cov = "^2.10.1"
+pytest-mock = "^3.3.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
