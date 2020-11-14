@@ -2,7 +2,6 @@ from io import BytesIO
 from typing import Optional, Union, List
 
 from docx import Document
-from docx.opc.exceptions import OpcError
 from docx.oxml import CT_P, CT_Tbl
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
@@ -69,7 +68,7 @@ class BasicDocxModelRule(BaseDocumentModelRule):
     def run_document_model_rule(self, request: Request) -> Optional[DocumentModel]:
         try:
             return BasicDOCXModel(BytesIO(request.request_body))
-        except OpcError or ValueError or AttributeError:
+        except Exception:
             return None
 
     @classmethod
