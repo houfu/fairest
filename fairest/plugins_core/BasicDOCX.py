@@ -1,5 +1,5 @@
 from io import BytesIO
-from typing import Optional, Union
+from typing import Optional, Union, List
 
 from docx import Document
 from docx.opc.exceptions import OpcError
@@ -57,7 +57,7 @@ class BasicDOCXModel(DocumentModel):
     def __len__(self) -> int:
         return len(self.paragraphs)
 
-    def get_full_text(self) -> list[str]:
+    def get_full_text(self) -> List[str]:
         return [paragraph.get_text() for paragraph in self.paragraphs]
 
 

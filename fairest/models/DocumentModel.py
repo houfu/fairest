@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 from abc import abstractmethod
 from collections.abc import Sequence
-from typing import overload
+from typing import overload, List
 
 
 class DocumentSection:
@@ -48,4 +50,4 @@ class DocumentModel(Sequence):
         self.document_type = document_type if document_type else self.__class__.__name__
 
     @abstractmethod
-    def get_full_text(self) -> list[str]: ...
+    def get_full_text(self) -> List[str]: ...

@@ -81,7 +81,7 @@ class BaseFullTextRule(BaseRule):
         super().__init__(properties, request)
 
     @abstractmethod
-    def run_full_text_rule(self, request: Request, model: DocumentModel, text: list[str]) -> Optional[
+    def run_full_text_rule(self, request: Request, model: DocumentModel, text: List[str]) -> Optional[
         Union[Report, List[Report]]]: ...
 
 

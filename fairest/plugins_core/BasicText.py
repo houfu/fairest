@@ -27,7 +27,7 @@ class BasicTextSection(DocumentSection):
 
 
 class BasicTextModel(DocumentModel):
-    def get_full_text(self) -> list[str]:
+    def get_full_text(self) -> List[str]:
         return [section.get_text() for section in self.paragraphs]
 
     def __init__(self, text: Union[List[str], str]):
