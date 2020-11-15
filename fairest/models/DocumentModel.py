@@ -18,6 +18,10 @@ class DocumentSection:
     @abstractmethod
     def get_position(self) -> str: ...
 
+    def get_nlp_text(self):
+        from fairest.core.nlp import get_nlp_doc
+        return get_nlp_doc(self.get_text())
+
 
 class DocumentModel(Sequence):
     """
@@ -51,3 +55,8 @@ class DocumentModel(Sequence):
 
     @abstractmethod
     def get_full_text(self) -> List[str]: ...
+
+    def get_nlp_text(self):
+        from fairest.core.nlp import get_nlp_doc
+        document = "\n ".join(self.get_full_text())
+        return get_nlp_doc(document)

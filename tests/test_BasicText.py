@@ -22,13 +22,16 @@ def test_BasicTextModel():
     clauses = test_text.split('\n')
     model = BasicTextModel(clauses)
     assert model.document_type == 'BasicTextModel'
+    doc_1 = model.get_nlp_text()
+    assert doc_1.has_annotation("DEP")
     assert len(model) == 2
     assert model[
                1].get_text() == "3.5	The Service Provider represents and warrants that it is familiar with " \
                                 "any anti-corruption related regulation of Japanese and foreign federal, state, " \
                                 "and local governments and governmental agencies applicable to the Services " \
                                 "(the “Anti-Corruption Law”) and its purposes."
-    assert model[-1:] == [model[1]]
+    doc_2 = model[1].get_nlp_text()
+    assert doc_2.has_annotation("DEP")
     assert model.get_full_text() == clauses
     model2 = BasicTextModel(test_text)
     assert len(model2) == len(model)
