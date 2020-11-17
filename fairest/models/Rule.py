@@ -76,15 +76,6 @@ class BaseDocumentRule(BaseRule):
     def run_document_rule(self, request: Request, model: DocumentModel) -> Optional[Union[Report, List[Report]]]: ...
 
 
-class BaseFullTextRule(BaseRule):
-    def __init__(self, properties=None, request: Request = None):
-        super().__init__(properties, request)
-
-    @abstractmethod
-    def run_full_text_rule(self, request: Request, model: DocumentModel, text: List[str]) -> Optional[
-        Union[Report, List[Report]]]: ...
-
-
 class BaseSectionRule(BaseRule):
     def __init__(self, properties=None, request: Request = None):
         super().__init__(properties, request)
@@ -99,5 +90,4 @@ class BaseSectionRule(BaseRule):
 RuleType = Type[BaseRule]
 DocumentModelRuleType = Type[BaseDocumentModelRule]
 DocumentRuleType = Type[BaseDocumentRule]
-FullTextRuleType = Type[BaseFullTextRule]
 SectionRuleType = Type[BaseSectionRule]

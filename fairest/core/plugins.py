@@ -3,7 +3,7 @@ from typing import List
 import pluggy
 
 from fairest import hook_specs, plugins_core
-from fairest.models import DocumentModelRuleType, DocumentRuleType, FullTextRuleType, SectionRuleType
+from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType
 
 
 def get_plugin_manager():
@@ -33,10 +33,6 @@ def flatten_rules(rules):
 
 def collect_document_reporting_rules() -> List[DocumentRuleType]:
     return flatten_rules(pm.hook.get_DocumentRules())
-
-
-def collect_fulltext_reporting_rules() -> List[FullTextRuleType]:
-    return flatten_rules(pm.hook.get_FullTextRules())
 
 
 def collect_section_reporting_rules() -> List[SectionRuleType]:

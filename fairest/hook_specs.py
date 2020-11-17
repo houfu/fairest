@@ -2,7 +2,7 @@ from typing import Union, List
 
 import pluggy
 
-from fairest.models.Rule import SectionRuleType, FullTextRuleType, DocumentRuleType, DocumentModelRuleType
+from fairest.models.Rule import SectionRuleType, DocumentRuleType, DocumentModelRuleType
 
 hook_specs = pluggy.HookspecMarker('fairest')
 
@@ -24,17 +24,6 @@ def get_DocumentRules() -> Union[DocumentRuleType, List[DocumentRuleType]]:
 
     DocumentRule reads a DocumentModel and produces reports.
     In most cases, they are specific to a file format.
-
-    :return:
-    """
-
-
-@hook_specs
-def get_FullTextRules() -> Union[FullTextRuleType, List[FullTextRuleType]]:
-    """
-    Gets a list of FullTextRule classes or a FullTextRule class from a package.
-
-    FullTextRules reads the entire document in plain text and produces reports.
 
     :return:
     """

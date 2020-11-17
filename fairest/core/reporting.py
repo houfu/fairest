@@ -1,7 +1,6 @@
 from typing import List
 
-from fairest.core.plugins import collect_document_reporting_rules, collect_fulltext_reporting_rules, \
-    collect_section_reporting_rules
+from fairest.core.plugins import collect_document_reporting_rules, collect_section_reporting_rules
 from fairest.models import Report, DocumentModel, Request, Response
 
 
@@ -24,10 +23,6 @@ def run_reporting(document: DocumentModel, request: Request, response: Response)
     for rule_type in document_rules:
         rule = rule_type(request=request)
         response.add_report(rule.run_document_rule(request, document))
-    fulltext_rules = collect_fulltext_reporting_rules()
-    for rule_type in fulltext_rules:
-        rule = rule_type(request=request)
-        response.add_report(rule.run_full_text_rule(request, document, document.get_full_text()))
     section_rules = collect_section_reporting_rules()
     for section in document:
         for rule_type in section_rules:
