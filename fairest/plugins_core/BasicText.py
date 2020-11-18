@@ -55,7 +55,7 @@ class BasicTextModel(DocumentModel):
 class BasicTextModelRule(BaseDocumentModelRule):
 
     def check_document(self, document: Union[str, bytes], current: Optional[DocumentModel]) -> bool:
-        return isinstance(document, str) and current is None
+        return document != "" and isinstance(document, str) and current is None
 
     @classmethod
     def describe(cls) -> RuleDescription:

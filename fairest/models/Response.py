@@ -15,10 +15,10 @@ class ResponseCode(Enum):
       there was no error with the request.
     * With Error: Fairest completed its processing, but there was errors.
     """
-    OK = auto
-    BAD_REQUEST = auto
-    FORBIDDEN = auto
-    WITH_ERROR = auto
+    OK = auto()
+    BAD_REQUEST = auto()
+    FORBIDDEN = auto()
+    WITH_ERROR = auto()
 
 
 class Response:
