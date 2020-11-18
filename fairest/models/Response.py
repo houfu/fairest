@@ -32,6 +32,7 @@ class Response:
         self.source_request = request
         self.reports: List[Report] = []
         self.response_code = ResponseCode.OK
+        self.debug_log = ""
 
     def add_report(self, report: Union[Report, List[Report]]):
         """Short cut for adding a report to the list."""
