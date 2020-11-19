@@ -34,9 +34,10 @@ class Response:
         self.response_code = ResponseCode.OK
         self.debug_log = ""
 
-    def add_report(self, report: Union[Report, List[Report]]):
+    def add_report(self, report: Union[Report, List[Report], None]):
         """Short cut for adding a report to the list."""
-        if type(report) is list:
-            self.reports.extend(report)
-        else:
-            self.reports.append(report)
+        if report:
+            if type(report) is list:
+                self.reports.extend(report)
+            else:
+                self.reports.append(report)

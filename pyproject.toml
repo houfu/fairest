@@ -9,6 +9,7 @@ python = "^3.8"
 pluggy = "^0.13.1"
 python-docx = "^0.8.10"
 spacy-nightly = "^3.0.0-rc.2"
+textstat = "^0.6.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6"

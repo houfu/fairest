@@ -23,7 +23,7 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 [[package]]
 name = "blis"
 version = "0.7.2"
-description = "The Blis BLAS-like linear algebra library, as a cls-contained C-extension."
+description = "The Blis BLAS-like linear algebra library, as a self-contained C-extension."
 category = "main"
 optional = false
 python-versions = "*"
@@ -273,6 +273,14 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "pyphen"
+version = "0.10.0"
+description = "Pure Python module to hyphenate text"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pytest"
 version = "6.1.2"
 description = "pytest: simple powerful testing with Python"
@@ -462,6 +470,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "textstat"
+version = "0.6.2"
+description = "Calculate statistical features from text"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pyphen = "*"
+
+[[package]]
 name = "thinc"
 version = "8.0.0rc2"
 description = "A refreshing functional take on deep learning, compatible with your favorite libraries"
@@ -553,7 +572,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "0e37ff81ff673a95cfb6cbe81899713c6b62ac790d3cdbd0cf899550e8e9d10a"
+content-hash = "eff69f29bbe9af9b5ab0905be04cf53ca25d3090772e31465140707bd06ac72b"
 
 [metadata.files]
 atomicwrites = [
@@ -859,6 +878,10 @@ pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
 ]
+pyphen = [
+    {file = "Pyphen-0.10.0-py3-none-any.whl", hash = "sha256:624b036eafe6f38fad3e79ee676ec711a8ce634feb9f34ac615bbaf73e662111"},
+    {file = "Pyphen-0.10.0.tar.gz", hash = "sha256:719b21dfb4b04fbc11cc0f6112418535fe35474021120cccfffc43a25fe63128"},
+]
 pytest = [
     {file = "pytest-6.1.2-py3-none-any.whl", hash = "sha256:4288fed0d9153d9646bfcdf0c0428197dba1ecb27a33bb6e031d002fa88653fe"},
     {file = "pytest-6.1.2.tar.gz", hash = "sha256:c0a7e94a8cdbc5422a51ccdad8e6f1024795939cc89159a0ae7f0b316ad3823e"},
@@ -934,6 +957,10 @@ srsly = [
     {file = "srsly-2.3.1-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:a4ac35861790b33d08d22f1e7b85c9f6b20c72b3f08a81ed2c649c36832b71fa"},
     {file = "srsly-2.3.1-cp39-cp39-win_amd64.whl", hash = "sha256:ed37bc399142493c7b35a852b93e8e043e2797ed2495efed592aecf1f324ab41"},
     {file = "srsly-2.3.1.tar.gz", hash = "sha256:3dcce93c69ff18e8a8d7decfdfdf8e1fd44c4446cdee8d0e5d545d6b172dc377"},
+]
+textstat = [
+    {file = "textstat-0.6.2-py3-none-any.whl", hash = "sha256:d5034eab9ba3a6f10b51879632bd9625640511a7f6072b6b7b57f8ecca931e9b"},
+    {file = "textstat-0.6.2.tar.gz", hash = "sha256:fa290f43713d41e44ce28227349763147c161052258db704ca84206d5b5b861e"},
 ]
 thinc = [
     {file = "thinc-8.0.0rc2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:571285e47bf000a212f2ff9b6f93dabeabc1c5b832663c6ebe2fc61b6eb350b7"},
