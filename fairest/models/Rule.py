@@ -39,7 +39,7 @@ class BaseRule:
         :param properties: A dictionary to update or merge with the Rule's properties. (By default it is empty)
         :return: None
         """
-        self._properties = self._properties | properties
+        self._properties.update(properties)
 
     @classmethod
     def get_rule_name(cls):
