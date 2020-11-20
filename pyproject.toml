@@ -5,7 +5,7 @@ description = ""
 authors = ["Ang Houfu <damon.houf@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6"
 pluggy = "^0.13.1"
 python-docx = "^0.8.10"
 spacy-nightly = "^3.0.0-rc.2"

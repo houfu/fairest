@@ -3,7 +3,7 @@ from typing import List
 import pluggy
 
 from fairest import hook_specs, plugins_core
-from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType
+from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType, RuleType
 
 
 def get_plugin_manager():
@@ -17,7 +17,7 @@ def get_plugin_manager():
 pm = get_plugin_manager()
 
 
-def flatten_rules(rules):
+def flatten_rules(rules) -> List[RuleType]:
     """
     Convenience function to flatten lists which may contain lists of rules to a list with only rules.
     """

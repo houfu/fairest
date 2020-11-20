@@ -8,7 +8,8 @@ from fairest.models import Request
     (Request('This is a test string'), 'BasicTextModel')
 ])
 def test_get_model(test_request, expected_name):
-    if result := get_model(test_request):
+    result = get_model(test_request)
+    if result:
         assert result.document_type == expected_name
     else:
         assert False

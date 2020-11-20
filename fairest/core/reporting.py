@@ -7,20 +7,6 @@ from fairest.models import Report, DocumentModel, Request, Response
 reporting_logger = logging.getLogger('fairest.reporting')
 
 
-def flatten_reports(reports) -> List[Report]:
-    """
-    Convenience function to flatten lists which may contain lists of reports to a list with only reports.
-    """
-    result = []
-    for report in reports:
-        if type(report) is list:
-            for sub_report in report:
-                result.append(sub_report)
-        else:
-            result.append(report)
-    return result
-
-
 def run_reporting(document: DocumentModel, request: Request, response: Response) -> Response:
     reporting_logger.info('Collecting document reporting rules.')
     document_rules = collect_document_reporting_rules()
