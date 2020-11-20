@@ -10,3 +10,7 @@ def test_run_document_rule():
     with open('Service Agreement.docx', 'rb') as file:
         test = BasicDOCXModel(file)
     assert rule.run_document_rule(Request(body=""), test)
+
+
+def test_describe():
+    assert DocumentStatisticsRule.describe()

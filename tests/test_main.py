@@ -14,6 +14,6 @@ def test_main():
 def test_logging():
     request = Request(body='')
     assert fairest(request).debug_log
-    request = Request(body="This is a test string.", debug_log_report=True)
+    request = Request(body="This is a test string.", disable={'DocumentStatisticsRule': True}, debug_log_report=True)
     response = fairest(request)
     assert len(response.reports) == 1

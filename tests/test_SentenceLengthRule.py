@@ -15,3 +15,7 @@ def test_run_section_rule():
     model = BasicTextModel(test)
     reports = rule.run_section_rule(Request(body=test), model, model[0])
     assert len(reports) == 1
+
+
+def test_describe():
+    assert SentenceLengthRule.describe()

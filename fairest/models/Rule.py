@@ -14,12 +14,10 @@ class RuleDescription:
 
 class BaseRule:
     def __init__(self, properties=None, request: Request = None):
-        if properties is None:
-            properties = {}
         if request is not None:
             if hasattr(request.options, self.get_rule_name()):
                 properties = properties | request.options[self.get_rule_name()]
-        self._properties = properties
+        self._properties = properties if properties is not None else {}
 
     @property
     def properties(self) -> dict:
