@@ -15,10 +15,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.extras]
+dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "furo", "sphinx", "pre-commit"]
 docs = ["furo", "sphinx", "zope.interface"]
 tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six"]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "furo", "sphinx", "pre-commit"]
 
 [[package]]
 name = "blis"
@@ -174,10 +174,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
 
 [package.extras]
-source = ["Cython (>=0.29.7)"]
 cssselect = ["cssselect (>=0.7)"]
 html5 = ["html5lib"]
 htmlsoup = ["beautifulsoup4"]
+source = ["Cython (>=0.29.7)"]
 
 [[package]]
 name = "markupsafe"
@@ -224,9 +224,9 @@ optional = false
 python-versions = ">= 3.6"
 
 [package.dependencies]
-typer = ">=0.3.0,<1.0.0"
-smart-open = ">=2.2.0,<4.0.0"
 dataclasses = {version = ">=0.6,<1.0", markers = "python_version < \"3.7\""}
+smart-open = ">=2.2.0,<4.0.0"
+typer = ">=0.3.0,<1.0.0"
 
 [package.extras]
 all = ["google-cloud-storage (>=1.26.0,<2.0.0)"]
@@ -255,8 +255,8 @@ optional = false
 python-versions = "*"
 
 [package.dependencies]
-murmurhash = ">=0.28.0,<1.1.0"
 cymem = ">=2.0.2,<2.1.0"
+murmurhash = ">=0.28.0,<1.1.0"
 
 [[package]]
 name = "py"
@@ -279,8 +279,8 @@ dataclasses = {version = ">=0.6", markers = "python_version < \"3.7\""}
 
 [package.extras]
 dotenv = ["python-dotenv (>=0.10.4)"]
-typing_extensions = ["typing-extensions (>=3.7.2)"]
 email = ["email-validator (>=1.0.3)"]
+typing_extensions = ["typing-extensions (>=3.7.2)"]
 
 [[package]]
 name = "pyparsing"
@@ -307,19 +307,19 @@ optional = false
 python-versions = ">=3.5"
 
 [package.dependencies]
-packaging = "*"
-py = ">=1.8.2"
-iniconfig = "*"
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
-colorama = {version = "*", markers = "sys_platform == \"win32\""}
-attrs = ">=17.4.0"
-toml = "*"
-pluggy = ">=0.12,<1.0"
 atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
+attrs = ">=17.4.0"
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
+iniconfig = "*"
+packaging = "*"
+pluggy = ">=0.12,<1.0"
+py = ">=1.8.2"
+toml = "*"
 
 [package.extras]
-testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 checkqa_mypy = ["mypy (==0.780)"]
+testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
 name = "pytest-cov"
@@ -330,8 +330,8 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
-pytest = ">=4.6"
 coverage = ">=4.4"
+pytest = ">=4.6"
 
 [package.extras]
 testing = ["fields", "hunter", "process-tests (==2.0.2)", "six", "pytest-xdist", "virtualenv"]
@@ -378,9 +378,9 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
-idna = ">=2.5,<3"
 certifi = ">=2017.4.17"
 chardet = ">=3.0.2,<4"
+idna = ">=2.5,<3"
 urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
@@ -407,9 +407,9 @@ python-versions = ">=3.5.*"
 requests = "*"
 
 [package.extras]
+all = ["requests", "boto3", "google-cloud-storage", "azure-storage-blob", "azure-common", "azure-core"]
 azure = ["azure-storage-blob", "azure-common", "azure-core"]
 gcp = ["google-cloud-storage"]
-all = ["requests", "boto3", "google-cloud-storage", "azure-storage-blob", "azure-common", "azure-core"]
 s3 = ["boto3"]
 test = ["mock", "moto", "pathlib2", "responses", "boto3", "paramiko", "parameterizedtestcase", "pytest", "pytest-rerunfailures"]
 
@@ -422,42 +422,42 @@ optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-tqdm = ">=4.38.0,<5.0.0"
-packaging = ">=20.0"
-preshed = ">=3.0.2,<3.1.0"
-typing-extensions = {version = ">=3.7.4", markers = "python_version < \"3.8\""}
-pytokenizations = "*"
-pathy = "*"
-catalogue = ">=2.0.1,<2.1.0"
-wasabi = ">=0.8.0,<1.1.0"
-importlib-metadata = {version = ">=0.20", markers = "python_version < \"3.8\""}
 blis = ">=0.4.0,<0.8.0"
-jinja2 = "*"
-pydantic = ">=1.5.0,<1.7.0"
-srsly = ">=2.3.0,<3.0.0"
-murmurhash = ">=0.28.0,<1.1.0"
-typer = ">=0.3.0,<0.4.0"
-numpy = ">=1.15.0"
-requests = ">=2.13.0,<3.0.0"
+catalogue = ">=2.0.1,<2.1.0"
 cymem = ">=2.0.2,<2.1.0"
+importlib-metadata = {version = ">=0.20", markers = "python_version < \"3.8\""}
+jinja2 = "*"
+murmurhash = ">=0.28.0,<1.1.0"
+numpy = ">=1.15.0"
+packaging = ">=20.0"
+pathy = "*"
+preshed = ">=3.0.2,<3.1.0"
+pydantic = ">=1.5.0,<1.7.0"
+pytokenizations = "*"
+requests = ">=2.13.0,<3.0.0"
+srsly = ">=2.3.0,<3.0.0"
 thinc = ">=8.0.0rc0,<8.1.0"
+tqdm = ">=4.38.0,<5.0.0"
+typer = ">=0.3.0,<0.4.0"
+typing-extensions = {version = ">=3.7.4", markers = "python_version < \"3.8\""}
+wasabi = ">=0.8.0,<1.1.0"
 
 [package.extras]
-lookups = ["spacy-lookups-data (>=1.0.0rc0,<1.1.0)"]
-transformers = ["spacy-transformers (>=1.0.0rc0,<1.1.0)"]
+cuda = ["cupy (>=5.0.0b4,<9.0.0)"]
+cuda100 = ["cupy-cuda100 (>=5.0.0b4,<9.0.0)"]
+cuda101 = ["cupy-cuda101 (>=5.0.0b4,<9.0.0)"]
+cuda102 = ["cupy-cuda102 (>=5.0.0b4,<9.0.0)"]
+cuda80 = ["cupy-cuda80 (>=5.0.0b4,<9.0.0)"]
 cuda90 = ["cupy-cuda90 (>=5.0.0b4,<9.0.0)"]
 cuda91 = ["cupy-cuda91 (>=5.0.0b4,<9.0.0)"]
 cuda92 = ["cupy-cuda92 (>=5.0.0b4,<9.0.0)"]
-cuda80 = ["cupy-cuda80 (>=5.0.0b4,<9.0.0)"]
-ko = ["natto-py (==0.9.0)"]
-cuda101 = ["cupy-cuda101 (>=5.0.0b4,<9.0.0)"]
-cuda = ["cupy (>=5.0.0b4,<9.0.0)"]
-th = ["pythainlp (>=2.0)"]
-cuda102 = ["cupy-cuda102 (>=5.0.0b4,<9.0.0)"]
-zh = ["spacy-pkuseg (==0.0.26)"]
-cuda100 = ["cupy-cuda100 (>=5.0.0b4,<9.0.0)"]
 ja = ["sudachipy (>=0.4.9)", "sudachidict-core (>=20200330)"]
+ko = ["natto-py (==0.9.0)"]
+lookups = ["spacy-lookups-data (>=1.0.0rc0,<1.1.0)"]
 ray = ["spacy-ray (>=0.1.0,<1.0.0)"]
+th = ["pythainlp (>=2.0)"]
+transformers = ["spacy-transformers (>=1.0.0rc0,<1.1.0)"]
+zh = ["spacy-pkuseg (==0.0.26)"]
 
 [[package]]
 name = "srsly"
@@ -487,31 +487,31 @@ optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-preshed = ">=3.0.2,<3.1.0"
-dataclasses = {version = ">=0.6,<1.0", markers = "python_version < \"3.7\""}
-typing-extensions = {version = ">=3.7.4.1,<4.0.0.0", markers = "python_version < \"3.8\""}
-catalogue = ">=0.2.0,<3.0.0"
-wasabi = ">=0.4.0,<1.1.0"
-contextvars = {version = ">=2.4,<3", markers = "python_version < \"3.7\""}
 blis = ">=0.4.1,<0.8"
-srsly = ">=2.0.0,<3.0.0"
-pydantic = ">=1.5.0,<1.7.0"
+catalogue = ">=0.2.0,<3.0.0"
+contextvars = {version = ">=2.4,<3", markers = "python_version < \"3.7\""}
+cymem = ">=2.0.2,<2.1.0"
+dataclasses = {version = ">=0.6,<1.0", markers = "python_version < \"3.7\""}
 murmurhash = ">=0.28.0,<1.1.0"
 numpy = ">=1.7.0"
-cymem = ">=2.0.2,<2.1.0"
+preshed = ">=3.0.2,<3.1.0"
+pydantic = ">=1.5.0,<1.7.0"
+srsly = ">=2.0.0,<3.0.0"
+typing-extensions = {version = ">=3.7.4.1,<4.0.0.0", markers = "python_version < \"3.8\""}
+wasabi = ">=0.4.0,<1.1.0"
 
 [package.extras]
-datasets = ["ml-datasets (==0.2.0a0)"]
-mxnet = ["mxnet (>=1.5.1,<1.6.0)"]
+cuda = ["cupy (>=5.0.0b4)"]
+cuda100 = ["cupy-cuda100 (>=5.0.0b4)"]
+cuda101 = ["cupy-cuda101 (>=5.0.0b4)"]
+cuda80 = ["cupy-cuda80 (>=5.0.0b4)"]
 cuda90 = ["cupy-cuda90 (>=5.0.0b4)"]
 cuda91 = ["cupy-cuda91 (>=5.0.0b4)"]
 cuda92 = ["cupy-cuda92 (>=5.0.0b4)"]
-torch = ["torch (>=1.5.0,<1.7.0)"]
-cuda101 = ["cupy-cuda101 (>=5.0.0b4)"]
-cuda = ["cupy (>=5.0.0b4)"]
-cuda80 = ["cupy-cuda80 (>=5.0.0b4)"]
+datasets = ["ml-datasets (==0.2.0a0)"]
+mxnet = ["mxnet (>=1.5.1,<1.6.0)"]
 tensorflow = ["tensorflow (>=2.0.0,<2.3.0)"]
-cuda100 = ["cupy-cuda100 (>=5.0.0b4)"]
+torch = ["torch (>=1.5.0,<1.7.0)"]
 
 [[package]]
 name = "toml"
@@ -545,9 +545,9 @@ click = ">=7.1.1,<7.2.0"
 
 [package.extras]
 test = ["pytest-xdist (>=1.32.0,<2.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "mypy (==0.782)", "black (>=19.10b0,<20.0b0)", "isort (>=5.0.6,<6.0.0)", "shellingham (>=1.3.0,<2.0.0)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (>=2.10.0,<3.0.0)", "coverage (>=5.2,<6.0)"]
-doc = ["mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=5.4.0,<6.0.0)", "markdown-include (>=0.5.1,<0.6.0)"]
 all = ["colorama (>=0.4.3,<0.5.0)", "shellingham (>=1.3.0,<2.0.0)"]
 dev = ["autoflake (>=1.3.1,<2.0.0)", "flake8 (>=3.8.3,<4.0.0)"]
+doc = ["mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=5.4.0,<6.0.0)", "markdown-include (>=0.5.1,<0.6.0)"]
 
 [[package]]
 name = "typing-extensions"
@@ -637,6 +637,7 @@ click = [
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
+    {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 contextvars = [
     {file = "contextvars-2.4.tar.gz", hash = "sha256:f38c908aaa59c14335eeea12abea5f443646216c4e29380d7bf34d2018e2c39e"},
@@ -757,6 +758,7 @@ lxml = [
     {file = "lxml-4.6.1-cp38-cp38-manylinux2014_aarch64.whl", hash = "sha256:e65c221b2115a91035b55a593b6eb94aa1206fa3ab374f47c6dc10d364583ff9"},
     {file = "lxml-4.6.1-cp38-cp38-win32.whl", hash = "sha256:d6f8c23f65a4bfe4300b85f1f40f6c32569822d08901db3b6454ab785d9117cc"},
     {file = "lxml-4.6.1-cp38-cp38-win_amd64.whl", hash = "sha256:573b2f5496c7e9f4985de70b9bbb4719ffd293d5565513e04ac20e42e6e5583f"},
+    {file = "lxml-4.6.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:098fb713b31050463751dcc694878e1d39f316b86366fb9fe3fbbe5396ac9fab"},
     {file = "lxml-4.6.1-cp39-cp39-manylinux1_i686.whl", hash = "sha256:1d87936cb5801c557f3e981c9c193861264c01209cb3ad0964a16310ca1b3301"},
     {file = "lxml-4.6.1-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:2d5896ddf5389560257bbe89317ca7bcb4e54a02b53a3e572e1ce4226512b51b"},
     {file = "lxml-4.6.1-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:9b06690224258db5cd39a84e993882a6874676f5de582da57f3df3a82ead9174"},

@@ -1,7 +1,9 @@
 [tool.poetry]
 name = "fairest"
 version = "0.1.0"
-description = ""
+description = "Proofreading tool for legal and other documents"
+license = "MIT"
+readme = "README.rst"
 authors = ["Ang Houfu <damon.houf@gmail.com>"]
 
 [tool.poetry.dependencies]
