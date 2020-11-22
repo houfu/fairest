@@ -23,3 +23,7 @@ def test_run_section_rule():
 
 def test_describe():
     assert SentenceLengthRule.describe()
+
+
+def test_describe_properties():
+    assert SentenceLengthRule.describe_properties()

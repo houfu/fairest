@@ -3,7 +3,7 @@ from typing import Optional, Union, List
 from spacy.tokens import Span
 
 from fairest.models import BaseSectionRule, Request, DocumentModel, DocumentSection, Report, SeverityLevel, \
-    RuleDescription
+    RuleDescription, RuleProperty
 
 
 class SentenceLengthRule(BaseSectionRule):
@@ -17,10 +17,18 @@ class SentenceLengthRule(BaseSectionRule):
         return RuleDescription(
             title="Sentence Length Rule",
             description="Checks sentences in a section to ensure that they do not exceed a certain length "
-                        "(default: 80 words). If the sentence is longer than allowed, produce a report with the "
-                        "offending sentence.",
+                        "If the sentence is longer than allowed, produce a report with the offending sentence.",
             author="Core Fairest Plugin"
         )
+
+    @classmethod
+    def describe_properties(cls) -> List[RuleProperty]:
+        return [
+            RuleProperty('length',
+                         'The threshold for making a report. '
+                         'Any sentence longer than this value is considered too long.',
+                         80)
+        ]
 
     def run_section_rule(self, request: Request, model: DocumentModel, section: DocumentSection) \
             -> Optional[Union[Report, List[Report]]]:

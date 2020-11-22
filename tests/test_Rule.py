@@ -3,6 +3,7 @@ from fairest.models import BaseRule
 
 def test_describe():
     assert BaseRule.describe()
+    assert len(BaseRule.describe_properties()) == 0
 
 
 def test_properties():

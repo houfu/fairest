@@ -6,10 +6,35 @@ from fairest.models import Request, DocumentModel, Report, DocumentSection
 
 class RuleDescription:
     def __init__(self, title, author="", contact="", description="A Fairest Plugin"):
+        f"""
+        This class describes a rule for information. For use with BaseRule.describe()
+
+        :param title: The name of the rule.
+        :param author: The person/organisation which wrote the rule.
+        :param contact: A method to contact the author.
+        :param description: A general description of what the Rule does.
+        """
         self.title = title
         self.author = author
         self.description = description
         self.contact = contact
+
+
+class RuleProperty:
+    def __init__(self, property_name: str, description="", property_default=None, friendly_name=""):
+        """
+        This class describes information on a property which can be set for a rule to customise its behavior.
+        For use with BaseRule.describe_properties()
+
+        :param property_name: Name of property in the code.
+        :param description: A description of what the property does.
+        :param property_default: A description of what the default value of the property is.
+        :param friendly_name: A user friendly name of the property
+        """
+        self.property_name = property_name
+        self.description = description
+        self.property_default = property_default
+        self.friendly_name = friendly_name if friendly_name else self.property_name
 
 
 class BaseRule:
@@ -53,6 +78,17 @@ class BaseRule:
     def describe(cls) -> RuleDescription:
         """Returns a RuleDescription of a Rule. Override this function to customise the description (recommended)."""
         return RuleDescription(cls.__name__)
+
+    @classmethod
+    def describe_properties(cls) -> List[RuleProperty]:
+        """
+        Returns a description of the properties which are available to be set in properties.
+        This is used for helping the user to set properties.
+
+        :return: A dictionary of keys being the key of the property and the value being a tuple of
+        the description of the property and an optional default value.
+        """
+        return []
 
 
 class BaseDocumentModelRule(BaseRule):
