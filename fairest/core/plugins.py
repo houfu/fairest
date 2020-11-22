@@ -17,7 +17,7 @@ def get_plugin_manager():
 pm = get_plugin_manager()
 
 
-def flatten_rules(rules) -> List[RuleType]:
+def flatten_rules(rules):
     """
     Convenience function to flatten lists which may contain lists of rules to a list with only rules.
     """
@@ -41,3 +41,11 @@ def collect_section_reporting_rules() -> List[SectionRuleType]:
 
 def collect_document_model_rules() -> List[DocumentModelRuleType]:
     return flatten_rules(pm.hook.get_DocumentModelRules())
+
+
+def collect_all_rules() -> List[RuleType]:
+    result = []
+    result.extend(pm.hook.get_DocumentModelRules())
+    result.extend(pm.hook.get_DocumentRules())
+    result.extend(pm.hook.get_SectionRules())
+    return flatten_rules(result)
