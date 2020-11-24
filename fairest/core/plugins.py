@@ -1,9 +1,9 @@
-from typing import List
+from typing import List, Dict
 
 import pluggy
 
 from fairest import hook_specs, plugins_core
-from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType, RuleType
+from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType, RuleType, RuleProperty
 
 
 def get_plugin_manager():
@@ -49,3 +49,10 @@ def collect_all_rules() -> List[RuleType]:
     result.extend(pm.hook.get_DocumentRules())
     result.extend(pm.hook.get_SectionRules())
     return flatten_rules(result)
+
+
+def get_options_list() -> Dict[str, List[RuleProperty]]:
+    result = dict()
+    for rule in collect_all_rules():
+        result[rule.get_rule_name()] = rule.describe_properties()
+    return result
