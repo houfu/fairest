@@ -1,4 +1,4 @@
-from fairest.models import Request
+from fairest.models import Request, SeverityLevel
 from fairest.plugins_core import SentenceLengthRule
 from fairest.plugins_core.BasicText import BasicTextModel
 
@@ -15,10 +15,16 @@ def test_run_section_rule():
     model = BasicTextModel(test)
     reports = rule.run_section_rule(Request(body=test), model, model[0])
     assert len(reports) == 1
+    assert reports[0].rule_id == 'SentenceLengthRule'
+    assert reports[0].position == f"Paragraph: 0, character: 0"
     request = Request(body=test, SentenceLengthRule={'length': 5})
     rule = SentenceLengthRule(request=request)
     reports = rule.run_section_rule(request, model, model[0])
     assert len(reports) == 2
+    request = Request(body=test, SentenceLengthRule={'Severity': SeverityLevel.OTHERS})
+    rule = SentenceLengthRule(request=request)
+    reports = rule.run_section_rule(request, model, model[0])
+    assert reports[0].severity == SeverityLevel.OTHERS
 
 
 def test_describe():

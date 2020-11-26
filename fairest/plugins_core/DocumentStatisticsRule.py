@@ -29,7 +29,7 @@ Word count: {textstat.lexicon_count(text)}
 Sentence count: {textstat.sentence_count(text)}
 Average sentence length: {textstat.avg_sentence_length(text)}
 Readability: {textstat.text_standard(text)}
-Reading time: {textstat.reading_time(text)}
+Reading time: {textstat.reading_time(text)}s
             """,
             rule_id=self.get_rule_name()
         )

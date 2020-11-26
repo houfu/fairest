@@ -27,22 +27,24 @@ class SentenceLengthRule(BaseSectionRule):
             RuleProperty('length',
                          'The threshold for making a report. '
                          'Any sentence longer than this value is considered too long.',
-                         80)
+                         80),
+            RuleProperty('Severity', "Reports are marked with this level of severity.", SeverityLevel.WARNING)
         ]
 
     def run_section_rule(self, request: Request, model: DocumentModel, section: DocumentSection) \
             -> Optional[Union[Report, List[Report]]]:
         result = []
         doc = section.get_nlp_text()
+        severity = self.properties.get('Severity', SeverityLevel.WARNING)
         for sent in doc.sents:
             if len(sent) > self.properties.get('length', 80):
-                result.append(SentenceLengthReport(sent))
+                result.append(SentenceLengthReport(sent, section.get_position(), severity))
         if len(result) > 0:
             return result
 
 
 class SentenceLengthReport(Report):
-    def __init__(self, sentence: Span):
+    def __init__(self, sentence: Span, position: str, severity: SeverityLevel):
         message = f"""
 Overly long sentence detected: '{sentence[:15]} ... {sentence[-15:]}'
 Long sentences affect readability and are arguably prone to errors and ambiguity. 
@@ -50,4 +52,5 @@ Consider fixing them by simplifying them into several sentences.
         """
         super().__init__(title="Overly long sentence", message=message,
                          rule_id="SentenceLengthRule",
-                         severity_level=SeverityLevel.WARNING)
+                         severity_level=severity,
+                         position=f"Paragraph: {position}, character: {sentence.start}")
