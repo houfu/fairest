@@ -14,10 +14,10 @@ class SeverityLevel(Enum):
       to adopt.
     * Others: A catch-all. (Try not to use it!)
     """
-    ERROR = auto
-    WARNING = auto
-    HINT = auto
-    OTHERS = auto
+    ERROR = auto()
+    WARNING = auto()
+    HINT = auto()
+    OTHERS = auto()
 
 
 class Report:

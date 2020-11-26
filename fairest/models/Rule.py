@@ -6,8 +6,8 @@ from fairest.models import Request, DocumentModel, Report, DocumentSection
 
 class RuleDescription:
     def __init__(self, title, author="", contact="", description="A Fairest Plugin"):
-        f"""
-        This class describes a rule for information. For use with BaseRule.describe()
+        """
+        This class describes a rule for information. For use with :method:`BaseRule.describe()`
 
         :param title: The name of the rule.
         :param author: The person/organisation which wrote the rule.
@@ -24,7 +24,7 @@ class RuleProperty:
     def __init__(self, property_name: str, description="", property_default=None, friendly_name=""):
         """
         This class describes information on a property which can be set for a rule to customise its behavior.
-        For use with BaseRule.describe_properties()
+        For use with :method:`BaseRule.describe_properties()`
 
         :param property_name: Name of property in the code.
         :param description: A description of what the property does.
