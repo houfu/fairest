@@ -11,11 +11,11 @@ def test_flatten_rules():
 
 
 def test_collect_all_rules(mocker):
-    patch_1 = mocker.patch('fairest.core.rules.pm.hook.get_DocumentModelRules')
+    patch_1 = mocker.patch('fairest.core.rules.pm.hook.get_document_model_rules')
     patch_1.return_value = [BaseRule]
-    patch_2 = mocker.patch('fairest.core.rules.pm.hook.get_DocumentRules')
+    patch_2 = mocker.patch('fairest.core.rules.pm.hook.get_document_rules')
     patch_2.return_value = []
-    patch_3 = mocker.patch('fairest.core.rules.pm.hook.get_SectionRules')
+    patch_3 = mocker.patch('fairest.core.rules.pm.hook.get_section_rules')
     patch_3.return_value = [BaseRule, [BaseRule, BaseRule]]
     assert len(collect_all_rules()) == 4
 

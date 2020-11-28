@@ -6,7 +6,7 @@ def test_request():
     assert request
     assert request.options['custom_param']
     request = Request(body='', disable={'SentenceLengthRule': True})
-    assert request.isRuleDisabled('SentenceLengthRule')
+    assert request.is_rule_disabled('SentenceLengthRule')
 
 
 def test_report():
@@ -23,6 +23,6 @@ def test_response_add_report():
 
 def test_is_string():
     test_request_1 = Request(body='String')
-    assert test_request_1.isString()
+    assert test_request_1.is_string()
     test_request_2 = Request(body=b'Bytes')
-    assert not test_request_2.isString()
+    assert not test_request_2.is_string()

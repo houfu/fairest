@@ -31,22 +31,22 @@ def flatten_rules(rules):
 
 
 def collect_document_reporting_rules() -> List[DocumentRuleType]:
-    return flatten_rules(pm.hook.get_DocumentRules())
+    return flatten_rules(pm.hook.get_document_rules())
 
 
 def collect_section_reporting_rules() -> List[SectionRuleType]:
-    return flatten_rules(pm.hook.get_SectionRules())
+    return flatten_rules(pm.hook.get_section_rules())
 
 
 def collect_document_model_rules() -> List[DocumentModelRuleType]:
-    return flatten_rules(pm.hook.get_DocumentModelRules())
+    return flatten_rules(pm.hook.get_document_model_rules())
 
 
 def collect_all_rules() -> List[RuleType]:
     result = []
-    result.extend(pm.hook.get_DocumentModelRules())
-    result.extend(pm.hook.get_DocumentRules())
-    result.extend(pm.hook.get_SectionRules())
+    result.extend(pm.hook.get_document_model_rules())
+    result.extend(pm.hook.get_document_rules())
+    result.extend(pm.hook.get_section_rules())
     return flatten_rules(result)
 
 

@@ -14,10 +14,10 @@ class Request:
         self.request_body = body
         self.options = kwargs
 
-    def isString(self) -> bool:
+    def is_string(self) -> bool:
         """Convenience method to determine if the request body is a file or a string."""
         return isinstance(self.request_body, str)
 
-    def isRuleDisabled(self, key: str) -> bool:
+    def is_rule_disabled(self, key: str) -> bool:
         """Convenience method to determine if a rule is disabled by the Request. """
         return key in self.disable
