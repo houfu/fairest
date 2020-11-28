@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 
-from fairest.core.plugins import collect_document_model_rules
+from fairest.core.rules import collect_document_model_rules
 from fairest.models import DocumentModel
 
 modelling_logger = logging.getLogger('fairest.modelling')

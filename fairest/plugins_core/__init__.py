@@ -6,15 +6,15 @@ from fairest.plugins_core.SentenceLengthRule import SentenceLengthRule
 
 
 @fairest.hook_impl(trylast=True)
-def get_DocumentModelRules():
+def get_document_model_rules():
     return [BasicTextModelRule, BasicDocxModelRule]
 
 
 @fairest.hook_impl
-def get_DocumentRules():
+def get_document_rules():
     return [DocumentStatisticsRule]
 
 
 @fairest.hook_impl
-def get_SectionRules():
+def get_section_rules():
     return [SentenceLengthRule]
