@@ -1,4 +1,4 @@
-from fairest.core.plugins import flatten_rules, collect_all_rules, get_options_list
+from fairest.core.rules import flatten_rules, collect_all_rules, get_options_list
 from fairest.models import BaseRule
 from fairest.plugins_core import SentenceLengthRule
 
@@ -11,17 +11,17 @@ def test_flatten_rules():
 
 
 def test_collect_all_rules(mocker):
-    patch_1 = mocker.patch('fairest.core.plugins.pm.hook.get_DocumentModelRules')
+    patch_1 = mocker.patch('fairest.core.rules.pm.hook.get_DocumentModelRules')
     patch_1.return_value = [BaseRule]
-    patch_2 = mocker.patch('fairest.core.plugins.pm.hook.get_DocumentRules')
+    patch_2 = mocker.patch('fairest.core.rules.pm.hook.get_DocumentRules')
     patch_2.return_value = []
-    patch_3 = mocker.patch('fairest.core.plugins.pm.hook.get_SectionRules')
+    patch_3 = mocker.patch('fairest.core.rules.pm.hook.get_SectionRules')
     patch_3.return_value = [BaseRule, [BaseRule, BaseRule]]
     assert len(collect_all_rules()) == 4
 
 
 def test_get_options_list(mocker):
-    patch = mocker.patch('fairest.core.plugins.collect_all_rules')
+    patch = mocker.patch('fairest.core.rules.collect_all_rules')
     patch.return_value = [BaseRule, SentenceLengthRule]
     result = get_options_list()
     assert list(result.keys()) == ['BaseRule', 'SentenceLengthRule']

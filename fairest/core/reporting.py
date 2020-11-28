@@ -1,7 +1,7 @@
 import logging
 from typing import List, Union
 
-from fairest.core.plugins import collect_document_reporting_rules, collect_section_reporting_rules
+from fairest.core.rules import collect_document_reporting_rules, collect_section_reporting_rules
 from fairest.models import Report, DocumentModel, Request, Response
 
 reporting_logger = logging.getLogger('fairest.reporting')

@@ -24,8 +24,7 @@ def flatten_rules(rules):
     result = []
     for rule in rules:
         if type(rule) is list:
-            for sub_rule in rule:
-                result.append(sub_rule)
+            result.extend(rule)
         else:
             result.append(rule)
     return result
