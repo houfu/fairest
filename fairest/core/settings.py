@@ -1,7 +1,7 @@
-from typing import List, Dict, Any, Union
+from typing import List, Dict, Any
 
 from fairest.core.rules import collect_all_rules
-from fairest.models import RuleType, Request
+from fairest.models import RuleClass
 
 
 class Settings:
@@ -12,7 +12,7 @@ class Settings:
     rules_options: Dict[str, Any] = {}
 
     @property
-    def disabled_rules(self) -> List[RuleType]:
+    def disabled_rules(self) -> List[RuleClass]:
         """Property to compile a list of disabled rules from the enable and disable rules settings."""
         all_rules = collect_all_rules()
         if len(self.enable_rules_only) > 0:

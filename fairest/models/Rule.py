@@ -1,11 +1,18 @@
 from abc import abstractmethod
+from enum import Enum, auto
 from typing import Optional, Union, List, Type
 
 from fairest.models import Request, DocumentModel, Report, DocumentSection
 
 
+class RuleType(Enum):
+    DOCUMENT_MODEL = auto()
+    DOCUMENT = auto()
+    SECTION = auto()
+
+
 class RuleDescription:
-    def __init__(self, title, author="", contact="", description="A Fairest Plugin"):
+    def __init__(self, title, author="", contact="", description="A Fairest Rule"):
         """
         This class describes a rule for information. For use with :method:`BaseRule.describe()`
 
@@ -75,6 +82,11 @@ class BaseRule:
         return cls.__name__
 
     @classmethod
+    @abstractmethod
+    def get_rule_type(cls) -> RuleType:
+        ...
+
+    @classmethod
     def describe(cls) -> RuleDescription:
         """Returns a RuleDescription of a Rule. Override this function to customise the description (recommended)."""
         return RuleDescription(cls.__name__)
@@ -101,6 +113,10 @@ class BaseDocumentModelRule(BaseRule):
     @abstractmethod
     def check_document(self, document: Union[str, bytes], current: Optional[DocumentModel]) -> bool: ...
 
+    @classmethod
+    def get_rule_type(cls) -> RuleType:
+        return RuleType.DOCUMENT_MODEL
+
 
 class BaseDocumentRule(BaseRule):
     def __init__(self, properties=None, request: Request = None):
@@ -108,6 +124,10 @@ class BaseDocumentRule(BaseRule):
 
     @abstractmethod
     def run_document_rule(self, request: Request, model: DocumentModel) -> Optional[Union[Report, List[Report]]]: ...
+
+    @classmethod
+    def get_rule_type(cls) -> RuleType:
+        return RuleType.DOCUMENT
 
 
 class BaseSectionRule(BaseRule):
@@ -118,10 +138,14 @@ class BaseSectionRule(BaseRule):
     def run_section_rule(self, request: Request, model: DocumentModel, section: DocumentSection) -> Optional[
         Union[Report, List[Report]]]: ...
 
+    @classmethod
+    def get_rule_type(cls) -> RuleType:
+        return RuleType.SECTION
+
 
 # Type aliases
 
-RuleType = Type[BaseRule]
-DocumentModelRuleType = Type[BaseDocumentModelRule]
-DocumentRuleType = Type[BaseDocumentRule]
-SectionRuleType = Type[BaseSectionRule]
+RuleClass = Type[BaseRule]
+DocumentModelRuleClass = Type[BaseDocumentModelRule]
+DocumentRuleClass = Type[BaseDocumentRule]
+SectionRuleClass = Type[BaseSectionRule]

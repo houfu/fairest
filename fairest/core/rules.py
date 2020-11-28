@@ -1,9 +1,10 @@
+from itertools import chain
 from typing import List, Dict
 
 import pluggy
 
 from fairest import hook_specs, plugins_core
-from fairest.models import DocumentModelRuleType, DocumentRuleType, SectionRuleType, RuleType, RuleProperty
+from fairest.models import DocumentModelRuleClass, DocumentRuleClass, SectionRuleClass, RuleClass, RuleProperty
 
 
 def get_plugin_manager():
@@ -30,24 +31,24 @@ def flatten_rules(rules):
     return result
 
 
-def collect_document_reporting_rules() -> List[DocumentRuleType]:
+def collect_document_reporting_rules() -> List[DocumentRuleClass]:
     return flatten_rules(pm.hook.get_document_rules())
 
 
-def collect_section_reporting_rules() -> List[SectionRuleType]:
+def collect_section_reporting_rules() -> List[SectionRuleClass]:
     return flatten_rules(pm.hook.get_section_rules())
 
 
-def collect_document_model_rules() -> List[DocumentModelRuleType]:
+def collect_document_model_rules() -> List[DocumentModelRuleClass]:
     return flatten_rules(pm.hook.get_document_model_rules())
 
 
-def collect_all_rules() -> List[RuleType]:
-    result = []
-    result.extend(pm.hook.get_document_model_rules())
-    result.extend(pm.hook.get_document_rules())
-    result.extend(pm.hook.get_section_rules())
-    return flatten_rules(result)
+def collect_all_rules() -> List[RuleClass]:
+    return flatten_rules(chain(
+        pm.hook.get_document_model_rules(),
+        pm.hook.get_document_rules(),
+        pm.hook.get_section_rules()
+    ))
 
 
 def get_options_list() -> Dict[str, List[RuleProperty]]:

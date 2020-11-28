@@ -2,13 +2,13 @@ from typing import Union, List
 
 import pluggy
 
-from fairest.models.Rule import SectionRuleType, DocumentRuleType, DocumentModelRuleType
+from fairest.models.Rule import SectionRuleClass, DocumentRuleClass, DocumentModelRuleClass
 
 hook_specs = pluggy.HookspecMarker('fairest')
 
 
 @hook_specs
-def get_document_model_rules() -> Union[DocumentModelRuleType, List[DocumentModelRuleType]]:
+def get_document_model_rules() -> Union[DocumentModelRuleClass, List[DocumentModelRuleClass]]:
     """
     Gets a list of DocumentModelRule classes or a DocumentModelRule class from a package.
 
@@ -18,7 +18,7 @@ def get_document_model_rules() -> Union[DocumentModelRuleType, List[DocumentMode
 
 
 @hook_specs
-def get_document_rules() -> Union[DocumentRuleType, List[DocumentRuleType]]:
+def get_document_rules() -> Union[DocumentRuleClass, List[DocumentRuleClass]]:
     """
     Gets a list of DocumentRule classes or a DocumentRule class from a package.
 
@@ -30,7 +30,7 @@ def get_document_rules() -> Union[DocumentRuleType, List[DocumentRuleType]]:
 
 
 @hook_specs
-def get_section_rules() -> Union[SectionRuleType, List[SectionRuleType]]:
+def get_section_rules() -> Union[SectionRuleClass, List[SectionRuleClass]]:
     """
     Gets a list of SectionRule classes or a SectionRule class from a package.
 
