@@ -16,7 +16,7 @@ def init_logger(level=logging.DEBUG) -> logging.StreamHandler:
 def close_logger(log_stream: logging.StreamHandler, response: Response):
     log_stream.flush()
     response.debug_log = log_stream.stream.getvalue()
-    if response.source_request.options.get('debug_log_report', False):
+    if response.source_request.options.get('development', False):
         response.add_report(DebugReport(response.debug_log))
     log_stream.close()
 

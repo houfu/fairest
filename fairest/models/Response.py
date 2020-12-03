@@ -1,8 +1,7 @@
 from enum import Enum, auto
 from typing import List, Union
 
-from fairest.models import Report
-from fairest.models.Request import Request
+from fairest.models import Report, Request
 
 
 class ResponseCode(Enum):

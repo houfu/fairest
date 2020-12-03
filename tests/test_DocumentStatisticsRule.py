@@ -1,4 +1,4 @@
-from fairest.models import Request
+from fairest.models import Request, RuleType
 from fairest.plugins_core.BasicDOCX import BasicDOCXModel
 from fairest.plugins_core.BasicText import BasicTextModel
 from fairest.plugins_core.DocumentStatisticsRule import DocumentStatisticsRule
@@ -14,3 +14,4 @@ def test_run_document_rule():
 
 def test_describe():
     assert DocumentStatisticsRule.describe()
+    assert DocumentStatisticsRule.get_rule_type() == RuleType.DOCUMENT

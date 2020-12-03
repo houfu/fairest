@@ -9,10 +9,8 @@ def test_settings_class():
 def test_disabled_rules():
     test_settings = Settings()
     assert len(test_settings.disabled_rules) == 0
-    test_settings = Settings()
-    test_settings.disable_rules = ['BasicDocxModelRule']
+    test_settings = Settings(disable_rules=['BasicDocxModelRule'])
     assert BasicDocxModelRule in test_settings.disabled_rules
     assert len(test_settings.disabled_rules) == 1
-    test_settings = Settings()
-    test_settings.enable_rules_only = ['BasicDocxModelRule']
+    test_settings = Settings(enable_rules_only=['BasicDocxModelRule'])
     assert [BasicDocxModelRule] not in test_settings.disabled_rules

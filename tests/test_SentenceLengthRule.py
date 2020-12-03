@@ -1,4 +1,4 @@
-from fairest.models import Request, SeverityLevel
+from fairest.models import Request, SeverityLevel, RuleType
 from fairest.plugins_core import SentenceLengthRule
 from fairest.plugins_core.BasicText import BasicTextModel
 
@@ -29,6 +29,7 @@ def test_run_section_rule():
 
 def test_describe():
     assert SentenceLengthRule.describe()
+    assert SentenceLengthRule.get_rule_type() == RuleType.SECTION
 
 
 def test_describe_properties():

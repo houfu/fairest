@@ -1,5 +1,6 @@
 from fairest.core.reporting import add_report, run_reporting
 from fairest.models import Response, Request, Report
+from fairest.plugins_core import DocumentStatisticsRule, SentenceLengthRule
 from fairest.plugins_core.BasicText import BasicTextModel
 
 
@@ -17,7 +18,7 @@ def test_add_report():
 
 def test_disable_rule():
     request = Request(body="This is a test string.",
-                      disable={'DocumentStatisticsRule': True, 'SentenceLengthRule': True})
+                      disable=[DocumentStatisticsRule, SentenceLengthRule])
     model = BasicTextModel('This is a test string.')
     response = run_reporting(model, request, Response(request))
     assert len(response.reports) == 0

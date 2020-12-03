@@ -1,6 +1,6 @@
 import pytest
 
-from fairest.models import Request
+from fairest.models import Request, RuleType
 from fairest.plugins_core.BasicDOCX import BasicDOCXModel, BasicDocxModelRule
 
 
@@ -25,6 +25,7 @@ def test_check_document(test_document, test_current, expected):
 
 def test_run_document_model_rule():
     rule = BasicDocxModelRule()
+    assert rule.get_rule_type() == RuleType.DOCUMENT_MODEL
     with open('Service Agreement.docx', 'rb') as file:
         request_2 = Request(file.read())
     assert rule.run_document_model_rule(request_2)

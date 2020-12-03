@@ -1,6 +1,6 @@
 import pytest
 
-from fairest.models import Request
+from fairest.models import Request, RuleType
 from fairest.plugins_core.BasicText import BasicTextSection, BasicTextModel, BasicTextModelRule
 
 
@@ -49,6 +49,7 @@ def test_check_document(test_document, test_current, expected):
 
 def test_describe():
     assert BasicTextModelRule.describe()
+    assert BasicTextModelRule.get_rule_type() == RuleType.DOCUMENT_MODEL
 
 
 @pytest.mark.parametrize("test_request, expected", [

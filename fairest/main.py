@@ -1,15 +1,21 @@
+from typing import Union
+
 from fairest.core.logging import init_logger, fairest_logger, close_logger
 from fairest.core.modelling import get_model
 from fairest.core.reporting import run_reporting
-from fairest.models import Response, Request, ResponseCode
+from fairest.core.settings import Settings
+from fairest.models import Response, ResponseCode
 
 
-def fairest(request: Request) -> Response:
+def fairest(body: Union[str, bytes], **kwargs) -> Response:
+    settings = Settings(**kwargs)
     log_stream = init_logger()
     fairest_logger.info('Begin main.')
+    request = settings.create_request(body, **kwargs)
     fairest_logger.debug(
-        f'Request submitted: size: {len(request.request_body)}, '
-        f'options: {request.options if request.options else "Default"}')
+        f'Request submitted: size: {len(body)}, '
+        f'Debug: {settings.development}'
+        f'options: {settings if request.options else "Default"}')
     response = Response(request=request)
     fairest_logger.info('Begin document model construction.')
     document = get_model(request)

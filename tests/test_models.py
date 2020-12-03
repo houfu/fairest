@@ -1,11 +1,13 @@
 from fairest.models import Report, Request, Response, SeverityLevel
+from fairest.plugins_core import SentenceLengthRule
 
 
 def test_request():
     request = Request(body='', custom_param=True)
     assert request
     assert request.options['custom_param']
-    request = Request(body='', disable={'SentenceLengthRule': True})
+    request = Request(body='', disable=[SentenceLengthRule])
+    assert request.is_rule_disabled(SentenceLengthRule)
     assert request.is_rule_disabled('SentenceLengthRule')
 
 

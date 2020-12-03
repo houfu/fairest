@@ -2,7 +2,7 @@ from typing import Union, List
 
 import pluggy
 
-from fairest.models.Rule import SectionRuleClass, DocumentRuleClass, DocumentModelRuleClass
+from fairest.models import DocumentModelRuleClass, DocumentRuleClass, SectionRuleClass
 
 hook_specs = pluggy.HookspecMarker('fairest')
 
