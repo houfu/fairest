@@ -1,5 +1,7 @@
 from typing import List, Optional, Dict, Any, Union
 
+import yaml
+
 from fairest.core.rules import collect_all_rules
 from fairest.models import RuleClass, Request
 
@@ -29,3 +31,14 @@ class Settings:
 
     def create_request(self, body: Union[str, bytes], **kwargs) -> Request:
         return Request(body, self.disabled_rules, self.rules_options, **kwargs)
+
+    @classmethod
+    def from_YAML(cls, yaml_file):
+        """Load settings from a yaml file. Input can be text or a file."""
+        raw_settings = yaml.load(yaml_file, Loader=yaml.SafeLoader)
+        return Settings(disable_rules=raw_settings.get('disable_rules'),
+                        enable_rules_only=raw_settings.get('enable_rules'),
+                        model_spacy=raw_settings.get('model_spacy', 'en_core_web_sm'),
+                        development=raw_settings.get('development', False),
+                        rules_options=raw_settings.get('rules_options')
+                        )
