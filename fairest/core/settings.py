@@ -5,6 +5,18 @@ import yaml
 from fairest.core.rules import collect_all_rules
 from fairest.models import RuleClass, Request
 
+RULES_OPTIONS = 'rules_options'
+
+DEVELOPMENT = 'development'
+
+MODEL_SPACY = 'model_spacy'
+
+ENABLE_RULES = 'enable_rules'
+
+DISABLE_RULES = 'disable_rules'
+
+default_model_spacy = 'en_core_web_sm'
+
 
 class Settings:
     def __init__(self, disable_rules: Optional[List[str]] = None, enable_rules_only: Optional[List[str]] = None,
@@ -36,9 +48,22 @@ class Settings:
     def from_YAML(cls, yaml_file):
         """Load settings from a yaml file. Input can be text or a file."""
         raw_settings = yaml.load(yaml_file, Loader=yaml.SafeLoader)
-        return Settings(disable_rules=raw_settings.get('disable_rules'),
-                        enable_rules_only=raw_settings.get('enable_rules'),
-                        model_spacy=raw_settings.get('model_spacy', 'en_core_web_sm'),
-                        development=raw_settings.get('development', False),
-                        rules_options=raw_settings.get('rules_options')
+        return Settings(disable_rules=raw_settings.get(DISABLE_RULES),
+                        enable_rules_only=raw_settings.get(ENABLE_RULES),
+                        model_spacy=raw_settings.get(MODEL_SPACY, default_model_spacy),
+                        development=raw_settings.get(DEVELOPMENT, False),
+                        rules_options=raw_settings.get(RULES_OPTIONS)
                         )
+
+    def to_YAML(self) -> str:
+        """Returns the current settings in a YAML format for convenient persistence"""
+        raw_settings = {}
+        if len(self.disabled_rules) > 0:
+            raw_settings[DISABLE_RULES] = [rule_class.get_rule_name() for rule_class in self.disabled_rules]
+        if self.model_spacy is not default_model_spacy:
+            raw_settings[MODEL_SPACY] = self.model_spacy
+        if self.development:
+            raw_settings[DEVELOPMENT] = self.development
+        if self.rules_options:
+            raw_settings[RULES_OPTIONS] = self.rules_options
+        return yaml.dump(raw_settings) if raw_settings != {} else ""

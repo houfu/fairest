@@ -34,8 +34,14 @@ def test_from_yaml():
     assert test_settings.rules_options == {
         'SentenceLengthRule': {'length': 50}
     }
+    test_settings_copy = Settings.from_YAML(test_settings.to_YAML())
+    assert test_settings.disabled_rules == test_settings_copy.disabled_rules
+    assert test_settings.model_spacy == test_settings_copy.model_spacy
+    assert test_settings.development is test_settings_copy.development
+    assert test_settings.rules_options == test_settings_copy.rules_options
     test_settings = Settings.from_YAML('A: 1')
     assert test_settings.disabled_rules == []
     assert test_settings.model_spacy == 'en_core_web_sm'
     assert test_settings.development is False
     assert test_settings.rules_options == {}
+    assert test_settings.to_YAML() == ''
