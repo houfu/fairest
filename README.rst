@@ -24,7 +24,7 @@ Features
 License
 --------
 
-Fairest and its core plugins/rules are licensed under the permissive MIT License. (Other plugins or rules written by others may have different licenses.)
+Fairest and its core plugins/rules are licensed under GPLv3. (Other plugins or rules written by others may have different licenses.)
 
 Disclaimer
 -----------
