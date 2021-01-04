@@ -2,7 +2,7 @@
 name = "fairest"
 version = "0.1.1"
 description = "Proofreading tool for legal and other documents"
-license = "GPL-3.0-or-later"
+license = "MIT"
 readme = "README.rst"
 authors = ["Ang Houfu <damon.houf@gmail.com>"]
 
